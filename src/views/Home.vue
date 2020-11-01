@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+
     <table class="table">
       <thead class="thead-lignt">
       <tr>
@@ -14,14 +15,16 @@
       </tr>
       </thead>
         <tbody>
-        <td> {{disasters.messageType}}</td>
-        <td> {{disasters.disasterCategory}}</td>
-        <td> {{disasters.ashFallTimeWarningCodeLocalGovernments[0].expectedAshFall}}</td>
-        <td> {{disasters.ashFallTimeWarningCodeLocalGovernments[0].localGovernment}}</td>
-        <td> {{disasters.ashFallTimeWarningCodeLocalGovernments[0].warningCode}}</td>
-        <td> {{disasters.ashFallTimeWarningCodeLocalGovernments[1].expectedAshFall}}</td>
-        <td> {{disasters.ashFallTimeWarningCodeLocalGovernments[1].localGovernment}}</td>
-        <td> {{disasters.ashFallTimeWarningCodeLocalGovernments[1].warningCode}}</td>
+       <tr v-for="disaster in disasters" v-bind:key="disaster">
+        <td> {{disaster.messageType}}</td>
+        <td> {{disaster.disasterCategory}}</td>
+        <td> {{disaster.ashFallTimeWarningCodeLocalGovernments}}</td>
+        <td> {{disaster.ashFallTimeWarningCodeLocalGovernments}}</td>
+        <td> {{disaster.ashFallTimeWarningCodeLocalGovernments}}</td>
+        <td> {{disaster.ashFallTimeWarningCodeLocalGovernments}}</td>
+        <td> {{disaster.ashFallTimeWarningCodeLocalGovernments}}</td>
+        <td> {{disaster.ashFallTimeWarningCodeLocalGovernments}}</td>
+        </tr>
         </tbody>
       </table>
   </div>
@@ -42,10 +45,14 @@ export default {
         var sse = new EventSource("/sse");
         var self=this;
         sse.onmessage = function (evt) {
-        self.disasters=JSON.parse(evt.data);     
-        }
+        self.disasters=JSON.parse(evt.data);  
+        console.log(self.disasters)
+       }
     }
   }
 }
 </script>
+
+    <!--v-for disaster in disasters-->
+    <!--/v-for-->
   
