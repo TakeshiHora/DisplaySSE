@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-
     <table class="table">
       <thead class="thead-lignt">
       <tr>
@@ -21,7 +20,8 @@
       </tr>
       </thead>
         <tbody>
-       <tr v-for="disaster in disasters" v-bind:key="disaster">
+       <tr Disaster  v-bind:key="disaster.id"  v-for="disaster in disasters" >
+        <!-- <tr v-for="disaster in disasters" v-bind:key="disaster.id"> -->
         <td> {{disaster.messageType}}</td>
         <td> {{disaster.disasterCategory}}</td>   
         <td> {{disaster.ashFallTimeWarningCodeLocalGovernments[0].expectedAshFall}}</td>
@@ -36,15 +36,19 @@
         <td> {{disaster.ashFallTimeWarningCodeLocalGovernments[3].expectedAshFall}}</td>
         <td> {{disaster.ashFallTimeWarningCodeLocalGovernments[3].localGovernment}}</td>
         <td> {{disaster.ashFallTimeWarningCodeLocalGovernments[3].warningCode}}</td>
-        <v-for/>
+        <v-for/ Disaster>   
         </tr>
         </tbody>
       </table>
-  </div>
+    </div>
 </template>
 <script>
+import Disaster from "../components/Disaster";
 export default {
   name: 'home',
+    components: {
+    Disaster
+  },
   data:function() {
     return{
         disasters:null
